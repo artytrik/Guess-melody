@@ -25,7 +25,9 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/genre">
-          <GenreQuestionScreen />
+          <GenreQuestionScreen
+            question={questions[0]}
+          />
         </Route>
       </Switch>
     </BrowserRouter>

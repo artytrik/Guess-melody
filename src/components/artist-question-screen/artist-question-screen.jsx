@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {GameType} from '../../utils.js';
 
 const ArtistQuestionScreen = (props) => {
   const {question} = props;
@@ -60,7 +61,8 @@ ArtistQuestionScreen.propTypes = {
     answers: PropTypes.arrayOf(PropTypes.shape({
       picture: PropTypes.string.isRequired,
       artist: PropTypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired
   }).isRequired
 };
 
