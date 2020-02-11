@@ -8,7 +8,7 @@ import GenreQuestionScreen from '../genre-question-screen/genre-question-screen.
 const welcomeButtonHandler = () => {};
 
 const App = (props) => {
-  const {errorsCount} = props;
+  const {errorsCount, questions} = props;
 
   return (
     <BrowserRouter>
@@ -20,7 +20,9 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/artist">
-          <ArtistQuestionScreen />
+          <ArtistQuestionScreen
+            question={questions[1]}
+          />
         </Route>
         <Route exact path="/genre">
           <GenreQuestionScreen />
