@@ -12,7 +12,7 @@ class GenreQuestionScreen extends PureComponent {
   }
 
   render() {
-    const {question} = this.props;
+    const {onAnswer, question} = this.props;
     const {answers: userAnswers} = this.state;
     const {genre, answers} = question;
 
@@ -37,6 +37,7 @@ class GenreQuestionScreen extends PureComponent {
           <form className="game__tracks"
             onSubmit={(evt) => {
               evt.preventDefault();
+              onAnswer(question, this.state.answers);
             }}
           >
             {answers.map((answer, i) => (
@@ -79,7 +80,8 @@ GenreQuestionScreen.propTypes = {
       src: PropTypes.string.isRequired,
       genre: PropTypes.string.isRequired
     })).isRequired
-  }).isRequired
+  }).isRequired,
+  onAnswer: PropTypes.func.isRequired
 };
 
 export default GenreQuestionScreen;

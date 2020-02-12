@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {GameType} from '../../utils.js';
 
 const ArtistQuestionScreen = (props) => {
-  const {question} = props;
+  const {onAnswer, question} = props;
   const {song, answers} = question;
 
   return (
@@ -38,7 +38,12 @@ const ArtistQuestionScreen = (props) => {
           {answers.map((answer, i) => (
             <div key={answer.artist} className="artist">
               <input className="artist__input visually-hidden" type="radio"
-                name="answer" value={`answer-${i}`} id={`answer-${i}`} />
+                name="answer" value={`answer-${i}`} id={`answer-${i}`}
+                onChange={(evt) => {
+                  evt.preventDefault();
+                  onAnswer(question, answer);
+                }}
+              />
               <label className="artist__name" htmlFor={`answer-${i}`}>
                 <img className="artist__picture"
                   src={answer.picture} alt={answer.artist} />
@@ -63,7 +68,8 @@ ArtistQuestionScreen.propTypes = {
       artist: PropTypes.string.isRequired
     })).isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired
-  }).isRequired
+  }).isRequired,
+  onAnswer: PropTypes.func.isRequired
 };
 
 export default ArtistQuestionScreen;
