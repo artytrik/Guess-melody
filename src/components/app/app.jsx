@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen.jsx';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen.jsx';
+import AudioPlayer from '../audio-player/audio-player.jsx';
 import {GameType} from '../../utils.js';
 
 class App extends PureComponent {
