@@ -92,7 +92,8 @@ class AudioPlayer extends React.PureComponent {
 
 AudioPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired
+  src: PropTypes.string.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired
 };
 
 export default AudioPlayer;
