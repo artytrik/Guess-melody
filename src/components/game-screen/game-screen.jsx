@@ -1,10 +1,13 @@
 import React from 'react';
 import {GameType} from '../../utils.js';
+import Mistakes from '../mistakes/mistakes.jsx';
+import { connect } from 'react-redux';
 
 const GameScreen = (props) => {
   const {
     type,
-    children
+    children,
+    mistakes
   } = props;
 
   return (
@@ -17,15 +20,18 @@ const GameScreen = (props) => {
         <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
           <circle className="timer__line" cx={390} cy={390} r={370} style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} />
         </svg>
-        <div className="game__mistakes">
-          <div className="wrong" />
-          <div className="wrong" />
-          <div className="wrong" />
-        </div>
+        <Mistakes
+          count={mistakes}
+        />
       </header>
       {children}
     </section>
   );
 };
 
-export default GameScreen;
+const mapStateToProps = (state) => ({
+  mistakes: state.mistakes
+});
+
+export {GameScreen};
+export default connect(mapStateToProps)(GameScreen);
