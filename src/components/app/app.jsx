@@ -7,6 +7,7 @@ import GenreQuestionScreen from '../genre-question-screen/genre-question-screen.
 import {GameType} from '../../utils.js';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
+import GameScreen from '../game-screen/game-screen.jsx';
 
 class App extends PureComponent {
   _renderGameScreen() {
@@ -32,17 +33,21 @@ class App extends PureComponent {
       switch (question.type) {
         case GameType.ARTIST:
           return (
-            <ArtistQuestionScreen
-              question={question}
-              onAnswer={onUserAnswer}
-            />
+            <GameScreen>
+              <ArtistQuestionScreen
+                question={question}
+                onAnswer={onUserAnswer}
+              />
+            </GameScreen>
           );
         case GameType.GENRE:
           return (
-            <GenreQuestionScreen
-              question={question}
-              onAnswer={onUserAnswer}
-            />
+            <GameScreen>
+              <GenreQuestionScreen
+                question={question}
+                onAnswer={onUserAnswer}
+              />
+            </GameScreen>
           );
       }
     }
