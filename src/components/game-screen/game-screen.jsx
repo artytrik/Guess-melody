@@ -33,7 +33,8 @@ const GameScreen = (props) => {
 GameScreen.propTypes = {
   type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node)
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
   ]).isRequired,
   mistakes: PropTypes.number.isRequired
 };
