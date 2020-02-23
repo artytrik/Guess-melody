@@ -33,7 +33,9 @@ class App extends PureComponent {
       switch (question.type) {
         case GameType.ARTIST:
           return (
-            <GameScreen>
+            <GameScreen
+              type={question.type}
+            >
               <ArtistQuestionScreen
                 question={question}
                 onAnswer={onUserAnswer}
@@ -42,7 +44,9 @@ class App extends PureComponent {
           );
         case GameType.GENRE:
           return (
-            <GameScreen>
+            <GameScreen
+              type={question.type}
+            >
               <GenreQuestionScreen
                 question={question}
                 onAnswer={onUserAnswer}
@@ -84,7 +88,10 @@ class App extends PureComponent {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired
+  questions: PropTypes.array.isRequired,
+  onUserAnswer: PropTypes.func.isRequired,
+  onWelcomeButtonClick: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state) => ({
