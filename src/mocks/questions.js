@@ -1,9 +1,5 @@
 const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 
-export const Settings = {
-  ERRORS_COUNT: 3
-};
-
 export const questions = [
   {
     type: `genre`,
@@ -28,13 +24,13 @@ export const questions = [
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`
     },
     answers: [{
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/A`,
       artist: `Jack Daniels`
     }, {
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/AB`,
       artist: `John Snow`
     }, {
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/AC`,
       artist: `Jim Beam`
     }]
   }
