@@ -9,8 +9,9 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
 import GameScreen from '../game-screen/game-screen.jsx';
 import withActivePlayer from '../../hocs/with-active-player/with-active-player.jsx';
+import withUserAnswer from '../../hocs/with-user-answer/with-user-answer.jsx';
 
-const GenreQuestionScreenWrapped = withActivePlayer(GenreQuestionScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 class App extends PureComponent {
