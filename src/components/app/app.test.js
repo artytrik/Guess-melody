@@ -57,6 +57,7 @@ describe(`App should render correctly`, () => {
           onWelcomeButtonClick={() => {}}
           step={-1}
           mistakes={0}
+          resetGame={() => {}}
         />
       </Provider>
       )
@@ -79,6 +80,7 @@ describe(`App should render correctly`, () => {
           onWelcomeButtonClick={() => {}}
           step={0}
           mistakes={0}
+          resetGame={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -104,6 +106,7 @@ describe(`App should render correctly`, () => {
           onWelcomeButtonClick={() => {}}
           step={1}
           mistakes={0}
+          resetGame={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -130,6 +133,7 @@ describe(`App should render correctly`, () => {
               onUserAnswer={() => {}}
               onWelcomeButtonClick={() => {}}
               step={1}
+              resetGame={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -156,6 +160,7 @@ describe(`App should render correctly`, () => {
               onUserAnswer={() => {}}
               onWelcomeButtonClick={() => {}}
               step={3}
+              resetGame={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
