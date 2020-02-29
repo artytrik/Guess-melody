@@ -56,6 +56,7 @@ describe(`App should render correctly`, () => {
           onUserAnswer={() => {}}
           onWelcomeButtonClick={() => {}}
           step={-1}
+          mistakes={0}
         />
       </Provider>
       )
@@ -77,6 +78,7 @@ describe(`App should render correctly`, () => {
           onUserAnswer={() => {}}
           onWelcomeButtonClick={() => {}}
           step={0}
+          mistakes={0}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -101,6 +103,7 @@ describe(`App should render correctly`, () => {
           onUserAnswer={() => {}}
           onWelcomeButtonClick={() => {}}
           step={1}
+          mistakes={0}
         />
       </Provider>, {
         createNodeMock: () => {
