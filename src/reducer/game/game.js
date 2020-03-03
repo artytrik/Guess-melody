@@ -1,26 +1,15 @@
-import {extend, GameType} from './utils.js';
+import {extend, GameType} from '../../utils.js';
 
 const initialState = {
   mistakes: 0,
   step: -1,
-  maxMistakes: 3,
-  questions: []
+  maxMistakes: 3
 };
 
 const ActionType = {
   INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
   INCREMENT_STEP: `INCREMENT_STEP`,
   RESET: `RESET`,
-  LOAD_QUESTIONS: `LOAD_QUESTIONS`
-};
-
-const Operation = {
-  loadQuestions: () => (dispatch, getState, api) => {
-    return api.get(`/questions`)
-      .then((response) => {
-        dispatch(ActionCreator.loadQuestions(response.data));
-      });
-  }
 };
 
 const isArtistAnswerCorrect = (question, userAnswer) => {
@@ -62,13 +51,6 @@ const ActionCreator = {
       payload: null
     };
   },
-
-  loadQuestions: (questions) => {
-    return {
-      type: ActionType.LOAD_QUESTIONS,
-      payload: questions
-    };
-  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -97,4 +79,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, ActionType, ActionCreator, Operation};
+export {reducer, ActionType, ActionCreator};
