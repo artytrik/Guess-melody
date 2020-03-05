@@ -1,17 +1,15 @@
-import {extend, GameType} from './utils.js';
-import {questions} from './mocks/questions.js';
+import {extend, GameType} from '../../utils.js';
 
 const initialState = {
   mistakes: 0,
   step: -1,
-  maxMistakes: 3,
-  questions
+  maxMistakes: 3
 };
 
 const ActionType = {
   INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
   INCREMENT_STEP: `INCREMENT_STEP`,
-  RESET: `RESET`
+  RESET: `RESET`,
 };
 
 const isArtistAnswerCorrect = (question, userAnswer) => {
@@ -52,7 +50,7 @@ const ActionCreator = {
       type: ActionType.RESET,
       payload: null
     };
-  }
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -70,6 +68,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.RESET:
       return extend(initialState, {
         step: 0
+      });
+
+    case ActionType.LOAD_QUESTIONS:
+      return extend(state, {
+        questions: action.payload
       });
   }
 

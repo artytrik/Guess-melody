@@ -6,12 +6,14 @@ import ArtistQuestionScreen from '../artist-question-screen/artist-question-scre
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen.jsx';
 import {GameType} from '../../utils.js';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/game/game.js';
 import GameScreen from '../game-screen/game-screen.jsx';
 import withActivePlayer from '../../hocs/with-active-player/with-active-player.jsx';
 import withUserAnswer from '../../hocs/with-user-answer/with-user-answer.jsx';
 import GameOverScreen from '../game-over-screen/game-over-screen.jsx';
 import WinScreen from '../win-screen/win-screen.jsx';
+import {getStep, getMistakes, getMaxMistakes} from '../../reducer/game/selectors.js';
+import {getQuestions} from '../../reducer/data/selectors.js';
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
@@ -124,10 +126,10 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  step: state.step,
-  maxMistakes: state.maxMistakes,
-  questions: state.questions,
-  mistakes: state.mistakes
+  step: getStep(state),
+  maxMistakes: getMaxMistakes(state),
+  questions: getQuestions(state),
+  mistakes: getMistakes(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
