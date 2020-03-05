@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {App} from './app.jsx';
+import NameSpace from '../../reducer/name-space.js';
 
 const mockStore = configureStore([]);
 
@@ -45,7 +46,9 @@ const questions = [
 describe(`App should render correctly`, () => {
   it(`WelcomeScreen should render correctly`, () => {
     const store = mockStore({
-      mistakes: 0
+      [NameSpace.GAME]: {
+        mistakes: 0
+      }
     });
 
     const tree = renderer
@@ -68,7 +71,9 @@ describe(`App should render correctly`, () => {
 
   it(`GenreQuestionScreen should render correctly`, () => {
     const store = mockStore({
-      mistakes: 3
+      [NameSpace.GAME]: {
+        mistakes: 3
+      }
     });
 
     const tree = renderer
@@ -94,7 +99,9 @@ describe(`App should render correctly`, () => {
 
   it(`ArtistQuestionScreen should render correctly`, () => {
     const store = mockStore({
-      mistakes: 3
+      [NameSpace.GAME]: {
+        mistakes: 3
+      }
     });
 
     const tree = renderer
@@ -120,7 +127,9 @@ describe(`App should render correctly`, () => {
 
   it(`Render GameOverScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
+      [NameSpace.GAME]: {
+        mistakes: 3
+      }
     });
 
     const tree = renderer
@@ -147,7 +156,9 @@ describe(`App should render correctly`, () => {
 
   it(`Render WinScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
+      [NameSpace.GAME]: {
+        mistakes: 3
+      }
     });
 
     const tree = renderer
