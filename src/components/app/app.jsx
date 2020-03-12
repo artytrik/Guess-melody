@@ -14,6 +14,7 @@ import GameOverScreen from '../game-over-screen/game-over-screen.jsx';
 import WinScreen from '../win-screen/win-screen.jsx';
 import {getStep, getMistakes, getMaxMistakes} from '../../reducer/game/selectors.js';
 import {getQuestions} from '../../reducer/data/selectors.js';
+import AuthorizationScreen from '../authorization-screen/authorization-screen.jsx';
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
@@ -107,6 +108,12 @@ class App extends PureComponent {
             <GenreQuestionScreenWrapped
               question={questions[0]}
               onAnswer={() => {}}
+            />
+          </Route>
+          <Route exact path="/auth">
+            <AuthorizationScreen
+              onReplayButtonClick={() => {}}
+              onSubmit={() => {}}
             />
           </Route>
         </Switch>
