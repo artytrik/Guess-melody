@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../utils.js';
 
 const WinScreen = (props) => {
   const {onReplayButtonClick, questionsCount, mistakesCount} = props;
@@ -19,13 +21,13 @@ const WinScreen = (props) => {
       <p className="result__total">
   Вы&nbsp;ответили правильно на {correctlyQuestionsCount} вопросов и совершили {mistakesCount}&nbsp;ошибки
       </p>
-      <button
+      <Link
         className="replay"
-        type="button"
+        to={AppRoute.ROOT}
         onClick={onReplayButtonClick}
       >
         Сыграть ещё раз
-      </button>
+      </Link>
     </section>
   );
 };
