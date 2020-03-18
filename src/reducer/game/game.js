@@ -3,7 +3,7 @@ import {extend, GameType} from '../../utils.js';
 const initialState = {
   mistakes: 0,
   step: -1,
-  maxMistakes: 3
+  maxMistakes: 10
 };
 
 const ActionType = {

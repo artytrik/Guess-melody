@@ -19,6 +19,7 @@ import {getAuthorizationStatus} from '../../reducer/user/selectors.js';
 import {Operation as UserOperation, AuthorizationStatus} from '../../reducer/user/user.js';
 import history from '../../history.js';
 import {AppRoute} from '../../utils.js';
+import PrivateRoute from '../private-route/private-route.jsx';
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
@@ -106,18 +107,22 @@ class App extends PureComponent {
               onSubmit={login}
             />
           </Route>
-          <Route exact path={AppRoute.RESULT}>
-            <WinScreen
-              questionsCount={questions.length}
-              mistakesCount={mistakes}
-              onReplayButtonClick={resetGame}
-            />
-          </Route>
           <Route exact path={AppRoute.LOSE}>
             <GameOverScreen
               onReplayButtonClick={resetGame}
             />
           </Route>
+          <PrivateRoute
+            exact
+            path={AppRoute.RESULT}
+            render={() =>
+              <WinScreen
+                questionsCount={questions.length}
+                mistakesCount={mistakes}
+                onReplayButtonClick={resetGame}
+              />
+            }
+          />
         </Switch>
       </Router>
     );
