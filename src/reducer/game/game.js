@@ -3,7 +3,7 @@ import {extend, GameType} from '../../utils.js';
 const initialState = {
   mistakes: 0,
   step: -1,
-  maxMistakes: 10
+  maxMistakes: 3
 };
 
 const ActionType = {
@@ -74,7 +74,7 @@ const reducer = (state = initialState, action) => {
       });
 
     case ActionType.RESET:
-      return extend(state, {
+      return extend(initialState, {
         step: 0
       });
 
@@ -83,7 +83,7 @@ const reducer = (state = initialState, action) => {
         questions: action.payload
       });
     case ActionType.GO_TO_WELCOME:
-      return extend(state, {
+      return extend(initialState, {
         step: -1
       });
   }

@@ -49,13 +49,16 @@ describe(`App should render correctly`, () => {
     const store = mockStore({
       [NameSpace.GAME]: {
         mistakes: 0
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH
       }
     });
 
     const tree = renderer
       .create(<Provider store={store}>
         <App
-          authorizationStatus={AuthorizationStatus.NO_AUTH}
+          authorizationStatus={AuthorizationStatus.AUTH}
           login={() => {}}
           maxMistakes={3}
           questions={questions}
@@ -76,6 +79,9 @@ describe(`App should render correctly`, () => {
     const store = mockStore({
       [NameSpace.GAME]: {
         mistakes: 3
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH
       }
     });
 
@@ -106,6 +112,9 @@ describe(`App should render correctly`, () => {
     const store = mockStore({
       [NameSpace.GAME]: {
         mistakes: 3
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH
       }
     });
 
@@ -136,6 +145,9 @@ describe(`App should render correctly`, () => {
     const store = mockStore({
       [NameSpace.GAME]: {
         mistakes: 3
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH
       }
     });
 
@@ -166,7 +178,10 @@ describe(`App should render correctly`, () => {
   it(`Render WinScreen`, () => {
     const store = mockStore({
       [NameSpace.GAME]: {
-        mistakes: 3
+        mistakes: 3,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH
       }
     });
 
@@ -198,6 +213,9 @@ describe(`App should render correctly`, () => {
     const store = mockStore({
       [NameSpace.GAME]: {
         mistakes: 3
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH
       }
     });
 
@@ -212,7 +230,7 @@ describe(`App should render correctly`, () => {
               questions={questions}
               onUserAnswer={() => {}}
               onWelcomeButtonClick={() => {}}
-              step={3}
+              step={2}
               resetGame={() => {}}
             />
           </Provider>, {
