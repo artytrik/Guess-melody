@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
-import {GameType} from '../../utils.js';
+import {GameType} from '../../utils';
 
 const withUserAnswer = (Component) => {
   class WithUserAnswer extends React.PureComponent {

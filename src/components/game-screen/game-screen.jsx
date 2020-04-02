@@ -1,12 +1,12 @@
-import React from 'react';
-import {GameType} from '../../utils.js';
-import Mistakes from '../mistakes/mistakes.jsx';
+import * as React from 'react';
+import {GameType} from '../../utils';
+import Mistakes from '../mistakes/mistakes';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getMistakes} from '../../reducer/game/selectors.js';
+import {getMistakes} from '../../reducer/game/selectors';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../utils.js';
-import {ActionCreator} from '../../reducer/game/game.js';
+import {AppRoute} from '../../utils';
+import {ActionCreator} from '../../reducer/game/game';
 
 const GameScreen = (props) => {
   const {

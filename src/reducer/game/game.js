@@ -1,4 +1,4 @@
-import {extend, GameType} from '../../utils.js';
+import {extend, GameType} from '../../utils';
 
 const initialState = {
   mistakes: 0,
