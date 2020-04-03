@@ -1,9 +1,29 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import {GameType} from '../../utils';
+import {QuestionGenre} from '../../types';
+import {Subtract} from 'utility-types';
+
+interface Props {
+  question: QuestionGenre;
+  onAnswer: (question: QuestionGenre, answers: Answer) => void;
+}
+
+interface State {
+  answers: Answer;
+}
+
+interface InjectedProps {
+  userAnswer: Answer;
+  onChange: (answerIndex: number) => void;
+  onAnswer: () => void;
+}
+
+type Answer = boolean[];
 
 const withUserAnswer = (Component) => {
-  class WithUserAnswer extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Props & Subtract<P, InjectedProps>;
+
+  class WithUserAnswer extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -46,18 +66,6 @@ const withUserAnswer = (Component) => {
       );
     }
   }
-
-  WithUserAnswer.propTypes = {
-    question: PropTypes.shape({
-      type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
-      genre: PropTypes.string.isRequired,
-      answers: PropTypes.arrayOf(PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired
-      })).isRequired
-    }).isRequired,
-    onAnswer: PropTypes.func.isRequired
-  };
 
   return WithUserAnswer;
 };

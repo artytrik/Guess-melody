@@ -1,7 +1,14 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-class AuthorizationScreen extends React.PureComponent {
+interface Props {
+  onSubmit: ({login, password}: {login: string; password: string}) => void;
+  onReplayButtonClick: () => void;
+}
+
+class AuthorizationScreen extends React.PureComponent<Props, {}> {
+  private loginRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
 
@@ -82,10 +89,5 @@ class AuthorizationScreen extends React.PureComponent {
     );
   }
 }
-
-AuthorizationScreen.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onReplayButtonClick: PropTypes.func.isRequired
-};
 
 export default AuthorizationScreen;

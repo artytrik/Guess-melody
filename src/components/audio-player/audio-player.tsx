@@ -1,7 +1,12 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
-class AudioPlayer extends React.PureComponent {
+interface Props {
+  isLoading: boolean;
+  isPlaying: boolean;
+  onPlayButtonClick: () => void;
+}
+
+class AudioPlayer extends React.PureComponent<Props, {}> {
   render() {
     const {onPlayButtonClick, isLoading, isPlaying, children} = this.props;
 
@@ -20,16 +25,5 @@ class AudioPlayer extends React.PureComponent {
     );
   }
 }
-
-AudioPlayer.propTypes = {
-  isPlaying: PropTypes.bool.isRequired,
-  src: PropTypes.string.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
-};
 
 export default AudioPlayer;

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import WelcomeScreen from '../welcome-screen/welcome-screen';
-import PropTypes from 'prop-types';
 import {Router, Route, Switch} from 'react-router-dom';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
-import {GameType} from '../../utils';
+import {GameType, QuestionGenre, QuestionArtist} from '../../types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/game/game';
 import GameScreen from '../game-screen/game-screen';
@@ -21,10 +20,24 @@ import history from '../../history';
 import {AppRoute} from '../../utils';
 import PrivateRoute from '../private-route/private-route';
 
+interface Props {
+  authorizationStatus: string;
+  login: () => void;
+  maxMistakes: number;
+  mistakes: number;
+  questions: Question[];
+  onUserAnswer: () => void;
+  onWelcomeButtonClick: () => void;
+  resetGame: () => void;
+  step: number;
+}
+
+type Question = QuestionArtist | QuestionGenre;
+
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
-class App extends React.PureComponent {
+class App extends React.PureComponent<Props, {}> {
   _renderGameScreen() {
     const {
       maxMistakes,
@@ -128,18 +141,6 @@ class App extends React.PureComponent {
     );
   }
 }
-
-App.propTypes = {
-  questions: PropTypes.array.isRequired,
-  onUserAnswer: PropTypes.func.isRequired,
-  onWelcomeButtonClick: PropTypes.func.isRequired,
-  step: PropTypes.number.isRequired,
-  maxMistakes: PropTypes.number.isRequired,
-  mistakes: PropTypes.number.isRequired,
-  resetGame: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  login: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state) => ({
   step: getStep(state),

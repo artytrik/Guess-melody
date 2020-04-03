@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {GameScreen} from './game-screen.jsx';
-import {GameType} from '../../utils';
+import {GameType} from '../../types';
 import {Router} from 'react-router-dom';
 import history from '../../history.js';
 

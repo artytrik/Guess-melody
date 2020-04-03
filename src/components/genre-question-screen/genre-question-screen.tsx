@@ -1,9 +1,16 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import {GameType} from '../../utils';
+import {QuestionGenre} from '../../types';
 import GenreQuestionItem from '../genre-question-item/genre-question-item';
 
-class GenreQuestionScreen extends React.PureComponent {
+interface Props {
+  onAnswer: () => void;
+  onChange: () => void;
+  question: QuestionGenre;
+  renderPlayer: (src: string, id: number) => React.ReactNode;
+  userAnswers: boolean[];
+}
+
+class GenreQuestionScreen extends React.PureComponent<Props, {}> {
   render() {
     const {
       onAnswer,
@@ -39,20 +46,5 @@ class GenreQuestionScreen extends React.PureComponent {
     );
   }
 }
-
-GenreQuestionScreen.propTypes = {
-  question: PropTypes.shape({
-    type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
-    genre: PropTypes.string.isRequired,
-    answers: PropTypes.arrayOf(PropTypes.shape({
-      src: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired
-    })).isRequired
-  }).isRequired,
-  onAnswer: PropTypes.func.isRequired,
-  renderPlayer: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  userAnswers: PropTypes.arrayOf(PropTypes.bool).isRequired
-};
 
 export default GenreQuestionScreen;

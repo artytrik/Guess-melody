@@ -1,9 +1,14 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../utils';
 
-const WinScreen = (props) => {
+interface Props {
+  questionsCount: number;
+  mistakesCount: number;
+  onReplayButtonClick: () => void;
+}
+
+const WinScreen: React.FunctionComponent<Props> = (props: Props) => {
   const {onReplayButtonClick, questionsCount, mistakesCount} = props;
   const correctlyQuestionsCount = questionsCount - mistakesCount;
 
@@ -30,12 +35,6 @@ const WinScreen = (props) => {
       </Link>
     </section>
   );
-};
-
-WinScreen.propTypes = {
-  onReplayButtonClick: PropTypes.func.isRequired,
-  mistakesCount: PropTypes.number.isRequired,
-  questionsCount: PropTypes.number.isRequired
 };
 
 export default WinScreen;
