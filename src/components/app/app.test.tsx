@@ -1,16 +1,18 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {App} from './app.jsx';
-import NameSpace from '../../reducer/name-space.js';
-import {AuthorizationStatus} from '../../reducer/user/user.js';
+import {App} from './app';
+import NameSpace from '../../reducer/name-space';
+import {AuthorizationStatus} from '../../reducer/user/user';
+import {GameType, QuestionArtist, QuestionGenre} from '../../types';
+import {noop} from '../../utils';
 
 const mockStore = configureStore([]);
 
-const questions = [
+const questions: (QuestionArtist | QuestionGenre)[] = [
   {
-    type: `genre`,
+    type: GameType.GENRE,
     genre: `rock`,
     answers: [{
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
@@ -26,7 +28,7 @@ const questions = [
       genre: `rock`,
     }],
   }, {
-    type: `artist`,
+    type: GameType.ARTIST,
     song: {
       artist: `Jim Beam`,
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
@@ -59,14 +61,14 @@ describe(`App should render correctly`, () => {
       .create(<Provider store={store}>
         <App
           authorizationStatus={AuthorizationStatus.AUTH}
-          login={() => {}}
+          login={noop}
           maxMistakes={3}
           questions={questions}
-          onUserAnswer={() => {}}
-          onWelcomeButtonClick={() => {}}
+          onUserAnswer={noop}
+          onWelcomeButtonClick={noop}
           step={-1}
           mistakes={0}
-          resetGame={() => {}}
+          resetGame={noop}
         />
       </Provider>
       )
@@ -89,14 +91,14 @@ describe(`App should render correctly`, () => {
       .create(<Provider store={store}>
         <App
           authorizationStatus={AuthorizationStatus.NO_AUTH}
-          login={() => {}}
+          login={noop}
           maxMistakes={3}
           questions={questions}
-          onUserAnswer={() => {}}
-          onWelcomeButtonClick={() => {}}
+          onUserAnswer={noop}
+          onWelcomeButtonClick={noop}
           step={0}
           mistakes={0}
-          resetGame={() => {}}
+          resetGame={noop}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -122,14 +124,14 @@ describe(`App should render correctly`, () => {
       .create(<Provider store={store}>
         <App
           authorizationStatus={AuthorizationStatus.NO_AUTH}
-          login={() => {}}
+          login={noop}
           maxMistakes={3}
           questions={questions}
-          onUserAnswer={() => {}}
-          onWelcomeButtonClick={() => {}}
+          onUserAnswer={noop}
+          onWelcomeButtonClick={noop}
           step={1}
           mistakes={0}
-          resetGame={() => {}}
+          resetGame={noop}
         />
       </Provider>, {
         createNodeMock: () => {
@@ -156,14 +158,14 @@ describe(`App should render correctly`, () => {
           <Provider store={store}>
             <App
               authorizationStatus={AuthorizationStatus.NO_AUTH}
-              login={() => {}}
+              login={noop}
               maxMistakes={3}
               mistakes={3}
               questions={questions}
-              onUserAnswer={() => {}}
-              onWelcomeButtonClick={() => {}}
+              onUserAnswer={noop}
+              onWelcomeButtonClick={noop}
               step={1}
-              resetGame={() => {}}
+              resetGame={noop}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -190,14 +192,14 @@ describe(`App should render correctly`, () => {
           <Provider store={store}>
             <App
               authorizationStatus={AuthorizationStatus.AUTH}
-              login={() => {}}
+              login={noop}
               maxMistakes={3}
               mistakes={0}
               questions={questions}
-              onUserAnswer={() => {}}
-              onWelcomeButtonClick={() => {}}
+              onUserAnswer={noop}
+              onWelcomeButtonClick={noop}
               step={3}
-              resetGame={() => {}}
+              resetGame={noop}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -224,14 +226,14 @@ describe(`App should render correctly`, () => {
           <Provider store={store}>
             <App
               authorizationStatus={AuthorizationStatus.NO_AUTH}
-              login={() => {}}
+              login={noop}
               maxMistakes={3}
               mistakes={0}
               questions={questions}
-              onUserAnswer={() => {}}
-              onWelcomeButtonClick={() => {}}
+              onUserAnswer={noop}
+              onWelcomeButtonClick={noop}
               step={2}
-              resetGame={() => {}}
+              resetGame={noop}
             />
           </Provider>, {
             createNodeMock: () => {

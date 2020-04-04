@@ -6,9 +6,6 @@ interface Props {
 }
 
 class AuthorizationScreen extends React.PureComponent<Props, {}> {
-  private loginRef: React.RefObject<HTMLInputElement>;
-  private passwordRef: React.RefObject<HTMLInputElement>;
-
   constructor(props) {
     super(props);
 
@@ -17,6 +14,9 @@ class AuthorizationScreen extends React.PureComponent<Props, {}> {
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  private loginRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
 
   handleSubmit(evt) {
     const {onSubmit} = this.props;

@@ -8,3 +8,5 @@ export const AppRoute = {
   RESULT: `/result`,
   ROOT: `/`
 };
+
+export const noop = () => {};

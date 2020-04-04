@@ -1,8 +1,9 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import GameOverScreen from './game-over-screen.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import GameOverScreen from './game-over-screen';
 import {Router} from 'react-router-dom';
-import history from '../../history.js';
+import history from '../../history';
+import {noop} from '../../utils';
 
 it(`GameOverScreen is rendered correctly`, () => {
   const tree = renderer.create(
@@ -10,7 +11,7 @@ it(`GameOverScreen is rendered correctly`, () => {
         history={history}
       >
         <GameOverScreen
-          onReplayButtonClick={() => {}}
+          onReplayButtonClick={noop}
         />
       </Router>
   ).toJSON();

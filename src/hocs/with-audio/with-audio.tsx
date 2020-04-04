@@ -14,8 +14,6 @@ interface State {
 
 const withAudio = (Component) => {
   class WithAudio extends React.PureComponent<Props, State> {
-    private audioRef: React.RefObject<HTMLAudioElement>;
-
     constructor(props) {
       super(props);
 
@@ -62,7 +60,7 @@ const withAudio = (Component) => {
     componentDidUpdate() {
       const audio = this.audioRef.current;
 
-      if (this.props.isPlaying) {
+      if (this.state.isPlaying) {
         audio.play();
       } else {
         audio.pause();
@@ -78,6 +76,8 @@ const withAudio = (Component) => {
       audio.ontimeupdate = null;
       audio.src = ``;
     }
+
+    private audioRef: React.RefObject<HTMLAudioElement>;
 
     render() {
       const {isLoading, isPlaying} = this.state;
